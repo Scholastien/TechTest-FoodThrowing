@@ -17,10 +17,23 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     [SerializeField] private GameStateEnum _gameState;
     public GameStateEnum GameState { get => _gameState; set => _gameState = value; }
 
+    private void OnEnable()
+    {
+
+        EventHandler.CorrectItemType += TestCorrect;
+        EventHandler.InvalidItemType += TestInvalid;
+    }
+    private void OnDisable()
+    {
+        EventHandler.CorrectItemType -= TestCorrect;
+        EventHandler.InvalidItemType -= TestInvalid;
+    }
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this.gameObject);
+        Init();
     }
 
 
@@ -29,5 +42,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         GameState = GameStateEnum.main_menu;
     }
 
+
+    public void TestCorrect()
+    {
+        Debug.Log("correct");
+    }
+    public void TestInvalid()
+    {
+        Debug.Log("invalid");
+    }
 
 }

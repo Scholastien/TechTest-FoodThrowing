@@ -3,6 +3,29 @@ using System;
 public static class EventHandler
 {
 
+    #region CheckingItem type
+
+    public static event Action ProcessItems;
+    public static void CallToProcessItems()
+    {
+        ProcessItems?.Invoke();
+    }
+
+    public static event Action CorrectItemType;
+    public static void CallCorrectItemType()
+    {
+        CorrectItemType?.Invoke();
+    }
+
+    public static event Action InvalidItemType;
+    public static void CallInvalidItemType()
+    {
+        InvalidItemType?.Invoke();
+    }
+
+    #endregion
+
+    #region Player Input
     public static event Action AllowPlayerInput;
     public static void CallToAllowPlayerInput()
     {
@@ -11,8 +34,9 @@ public static class EventHandler
     public static event Action ForbidPlayerInput;
     public static void CallToForbidPlayerInput()
     {
-        AllowPlayerInput?.Invoke();
+        ForbidPlayerInput?.Invoke();
     }
+    #endregion
 
     #region Scene Change Event
 

@@ -6,6 +6,9 @@ public class Player : SingletonMonobehaviour<Player>
 {
     private Camera _mainCamera;
 
+    [SerializeField] private Vector3 _spawnLocation;
+    public Vector3 SpawnLocation { get => _spawnLocation; set => _spawnLocation = value; }
+
     private bool _playerInputIsDisabled = false;
     public bool PlayerInputIsDisabled { get => _playerInputIsDisabled; set => _playerInputIsDisabled = value; }
 

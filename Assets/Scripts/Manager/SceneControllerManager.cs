@@ -60,7 +60,7 @@ public class SceneControllerManager : SingletonMonobehaviour<SceneControllerMana
         yield return StartCoroutine(Fade(1f));
 
         // set player position
-        Player.Instance.transform.position = spawnPosition;
+        Player.Instance.SpawnLocation = spawnPosition;
 
         // call before scene unload event
         EventHandler.CallBeforeSceneUnloadEvent();
