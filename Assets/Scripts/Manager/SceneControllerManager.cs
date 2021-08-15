@@ -15,7 +15,21 @@ public class SceneControllerManager : SingletonMonobehaviour<SceneControllerMana
     [SerializeField] private float fadeDuration = 1f;
     [SerializeField] private CanvasGroup faderCanvasGroup = null;
     [SerializeField] private Image faderImage = null;
-    public SceneName startingSceneName;
+    public SceneName startingSceneName; // Main menu scene name
+
+
+    private void OnEnable()
+    {
+        EventHandler.ReturnToMainMenu += ReturnToMainMenu;
+    }
+    private void OnDisable()
+    {
+        EventHandler.ReturnToMainMenu -= ReturnToMainMenu;
+    }
+    private void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(startingSceneName.ToString(), LoadSceneMode.Single);
+    }
 
     private IEnumerator Start()
     {
@@ -60,7 +74,7 @@ public class SceneControllerManager : SingletonMonobehaviour<SceneControllerMana
         yield return StartCoroutine(Fade(1f));
 
         // set player position
-        Player.Instance.SpawnLocation = spawnPosition;
+        //Player.Instance.SpawnLocation = spawnPosition;
 
         // call before scene unload event
         EventHandler.CallBeforeSceneUnloadEvent();
@@ -79,12 +93,16 @@ public class SceneControllerManager : SingletonMonobehaviour<SceneControllerMana
 
         // call after scene load fade in event
         EventHandler.CallAfterSceneUnloadFadeInEvent();
+
+        // Only if GameState is "game"
+        if (GameManager.Instance.GameState == GameManager.GameStateEnum.game)
+            EventHandler.CallToEnablePlayer();
     }
 
     // load as an additive scene and set as active
     private IEnumerator LoadSceneAndSetActive(string sceneName)
     {
-        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
         Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
 

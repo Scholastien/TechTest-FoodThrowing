@@ -38,8 +38,9 @@ public class BarrelBottomTrigger : MonoBehaviour
             {
                 EventHandler.CallInvalidItemType();
             }
-            _items.Remove(item);
-            Destroy(item);
+            int index = _items.IndexOf(item);
+            Destroy(item.gameObject);
+            _items.RemoveAt(index);
             if (_items.Count == 0)
             {
                 break;
