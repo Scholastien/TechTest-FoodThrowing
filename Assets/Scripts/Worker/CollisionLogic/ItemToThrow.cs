@@ -22,6 +22,18 @@ public class ItemToThrow : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Change the position of an item that gets out of bound to a valid position
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Boundaries")
+        {
+            ThrowableSpawner.Instance.PositionObject(gameObject);
+        }
+    }
+
 }
 
 

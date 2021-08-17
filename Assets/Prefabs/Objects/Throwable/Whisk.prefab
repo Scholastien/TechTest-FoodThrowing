@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: -5130479370875291857}
   m_Layer: 0
   m_Name: Whisk
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

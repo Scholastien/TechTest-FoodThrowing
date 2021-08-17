@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hand
   - Goal
+  - Grabbable
+  - Boundaries
   layers:
   - Default
   - TransparentFX

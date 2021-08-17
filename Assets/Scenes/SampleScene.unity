@@ -2568,7 +2568,7 @@ GameObject:
   - component: {fileID: 996688813}
   m_Layer: 0
   m_Name: Throwable objects
-  m_TagString: Untagged
+  m_TagString: Boundaries
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2613,11 +2613,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996688810}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3032222, y: 1, z: 4.471522}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.812335, y: 8.791609, z: 4.81756}
+  m_Center: {x: -0.5623126, y: 3.8958044, z: -0.00961256}
 --- !u!1 &1132711274
 GameObject:
   m_ObjectHideFlags: 0

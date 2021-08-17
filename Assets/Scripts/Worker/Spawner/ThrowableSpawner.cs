@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowableSpawner : MonoBehaviour
+public class ThrowableSpawner : SingletonMonobehaviour<ThrowableSpawner>
 {
 
     [SerializeField] private Rect _spawnRange;
@@ -40,9 +40,18 @@ public class ThrowableSpawner : MonoBehaviour
             GameObject go = GameObject.Instantiate(objToSpawn[Random.Range(0, objToSpawn.Count - 1)]);
             _spawnedGameObject.Add(go);
             go.transform.SetParent(transform);
-            float x = Random.Range(_spawnRange.x, _spawnRange.width);
-            float z = Random.Range(_spawnRange.y, _spawnRange.height);
-            go.transform.position = new Vector3(x, 1f, z) + transform.position;
+
+            PositionObject(go);
         }
+    }
+
+    /// <summary>
+    /// Position an object to a valid position, in bound with the environment
+    /// </summary>
+    public void PositionObject(GameObject go)
+    {
+        float x = Random.Range(_spawnRange.x, _spawnRange.width);
+        float z = Random.Range(_spawnRange.y, _spawnRange.height);
+        go.transform.position = new Vector3(x, 1f, z) + transform.position;
     }
 }
